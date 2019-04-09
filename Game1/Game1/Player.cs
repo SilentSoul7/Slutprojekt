@@ -10,7 +10,7 @@ namespace Game1
 {
     class Player : BaseObject
     {
-        float hp;
+        int hp = 100;
         float speed = 7f;
         private SpriteFont font;
         public int XP;
@@ -25,11 +25,22 @@ namespace Game1
         {
             base.Draw(spriteBatch);
         }
-
-        private void Move()
+        public override void Update (GameTime gametime)
         {
-            Keyboard.GetState();
+            KeyboardState state = Keyboard.GetState();
+
+            if(state.IsKeyDown(Keys.Right))
+                position.X += 10;
+            if(state.IsKeyDown(Keys.Left))
+                position.X -= 10;
+            if(state.IsKeyDown(Keys.Up))
+                position.Y -= 10;
+            if(state.IsKeyDown(Keys.Down))
+                position.Y += 10;
+
+            base.Update(gametime);
         }
+
         private void Death()
         {
             SpriteBatch.DrawString(font, "File", new Vector2(300, 100), Color.Black);

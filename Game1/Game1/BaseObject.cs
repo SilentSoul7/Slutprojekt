@@ -15,7 +15,7 @@ namespace Game1
         protected Color color = Color.White;
         protected Rectangle rectangle;
         protected Vector2 position;
-        public virtual void Update()
+        public virtual void Update(GameTime gametime)
         {
         }
 
