@@ -12,16 +12,18 @@ namespace Game1
     {
         int minSpawnTime;
         int maxSpawnTime;
+        public int hp;
         int speed;
         int attack;
 
 
-        public BaseEnemy(Texture2D texture, Vector2 position, int minSpawnTime, int maxSpawnTime, int speed, int attack)
+        public BaseEnemy(Texture2D texture, Vector2 position, int minSpawnTime, int maxSpawnTime, int hp, int speed, int attack)
         {
             this.texture = texture;
             this.position = position;
             this.minSpawnTime = minSpawnTime;
             this.maxSpawnTime = maxSpawnTime;
+            this.hp = hp;
             this.speed = speed;
             this.attack = attack;
         }
@@ -37,7 +39,7 @@ namespace Game1
                 Random random = new Random();
                 spawntime = random.Next(minSpawnTime, maxSpawnTime + 1);
                 List<BaseEnemy> Enemies = new List<BaseEnemy>();
-                Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0));
+                Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0,0));
             }
         }
 
@@ -50,6 +52,15 @@ namespace Game1
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+        }
+        
+        public void EnemyDeath()
+        {
+            if (hp <= 0)
+            {
+                
+            }
+
         }
     }
 }

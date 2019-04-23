@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 namespace Game1
 {
     class Player : BaseObject
@@ -14,6 +15,7 @@ namespace Game1
         float speed = 7f;
         private SpriteFont font;
         public int XP;
+        int highscore = 0;
 
         public Player(Texture2D texture, Vector2 position)
         {
@@ -41,7 +43,7 @@ namespace Game1
             base.Update(gametime);
         }
 
-        private void Death()
+        private void PlayerDeath()
         {
             SpriteBatch.DrawString(font, "File", new Vector2(300, 100), Color.Black);
             
@@ -50,11 +52,21 @@ namespace Game1
         public void levelUp()
         {
             List<int> levelThresholds = new List<int>();
-
         }
 
+        public void Highscore( int highscore)
+        {
+            StreamWriter sw = new StreamWriter("Highscore.txt");
+            sw.WriteLine(highscore);
+            sw.Close();
 
+            StreamReader sr = new StreamReader("Highscore.txt");
+            string highscore = sr.ReadToEnd();
+            sr.Close();
+        }
 
+    
+       
     }
 }
 
