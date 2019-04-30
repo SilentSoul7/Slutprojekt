@@ -8,16 +8,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace Game1
 {
-    class BaseEnemy:BaseObject
+    public class BaseEnemy:BaseObject
     {
+        enum EnemyType {Goblin, Zombie, Boss };
         int minSpawnTime;
         int maxSpawnTime;
         public int hp;
         int speed;
         int attack;
+        EnemyType enemyType;
 
-
-        public BaseEnemy(Texture2D texture, Vector2 position, int minSpawnTime, int maxSpawnTime, int hp, int speed, int attack)
+        public BaseEnemy(Texture2D texture, Vector2 position, int minSpawnTime, int maxSpawnTime, int hp, int speed, int attack, EnemyType enemyType )
         {
             this.texture = texture;
             this.position = position;
@@ -26,11 +27,12 @@ namespace Game1
             this.hp = hp;
             this.speed = speed;
             this.attack = attack;
+            this.enemyType = enemyType;
         }
 
         // Ska ligga i Game1
         public virtual void SpawnEnemy()
-        {
+        {            
             float spawntime = 0;
             float timer = 0;
             spawntime -= 1f / 60;
@@ -40,6 +42,7 @@ namespace Game1
                 spawntime = random.Next(minSpawnTime, maxSpawnTime + 1);
                 List<BaseEnemy> Enemies = new List<BaseEnemy>();
                 Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0,0));
+            
             }
         }
 

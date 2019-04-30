@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    class BaseObject
+    public class BaseObject
     {
         protected Texture2D texture;
         protected Color color = Color.White;

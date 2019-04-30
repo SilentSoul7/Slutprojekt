@@ -1,7 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Game1
 {
@@ -53,6 +57,8 @@ namespace Game1
             // TODO: Unload any non ContentManager content here
         }
 
+
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -64,6 +70,7 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
+            
 
             base.Update(gameTime);
         }
