@@ -45,6 +45,7 @@
     <Compile Include="BaseObject.cs" />
     <Compile Include="BaseWeapon.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Goblin.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace Game1
 {
     public class BaseEnemy:BaseObject
     {
-        enum EnemyType {Goblin, Zombie, Boss };
+        public enum EnemyType {Goblin, Zombie, Boss };
         int minSpawnTime;
         int maxSpawnTime;
         public int hp;
@@ -41,7 +41,7 @@ namespace Game1
                 Random random = new Random();
                 spawntime = random.Next(minSpawnTime, maxSpawnTime + 1);
                 List<BaseEnemy> Enemies = new List<BaseEnemy>();
-                Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0,0));
+                Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0,0, EnemyType.Goblin));
             
             }
         }
