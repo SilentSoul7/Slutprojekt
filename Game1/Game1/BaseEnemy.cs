@@ -11,8 +11,8 @@ namespace Game1
     public class BaseEnemy:BaseObject
     {
         public enum EnemyType {Goblin, Zombie, Boss };
-        int minSpawnTime;
-        int maxSpawnTime;
+        public int minSpawnTime;
+        public int maxSpawnTime;
         public int hp;
         int speed;
         int attack;
@@ -34,7 +34,6 @@ namespace Game1
         public virtual void SpawnEnemy()
         {            
             float spawntime = 0;
-            float timer = 0;
             spawntime -= 1f / 60;
 
             if (0 >= spawntime) { 

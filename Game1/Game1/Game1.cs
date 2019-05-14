@@ -16,7 +16,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        BaseEnemy baseEnemy = new BaseEnemy(null, Vector2.Zero, 0, 0, 0, 0, 0, BaseEnemy.EnemyType.Goblin);
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -57,7 +57,20 @@ namespace Game1
             // TODO: Unload any non ContentManager content here
         }
 
+        public virtual void SpawnEnemy()
+        {
+            float spawntime = 0;
+            spawntime -= 1f / 60;
 
+            if (0 >= spawntime)
+            {
+                Random random = new Random();
+                spawntime = random.Next(baseEnemy.minSpawnTime, baseEnemy.maxSpawnTime + 1);
+                List<BaseEnemy> Enemies = new List<BaseEnemy>();
+                Enemies.Add(new BaseEnemy(null, Vector2.Zero, 0, 0, 0, 0, 0, BaseEnemy.EnemyType.Goblin));
+
+            }
+        }
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -68,9 +81,9 @@ namespace Game1
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            SpawnEnemy();
             // TODO: Add your update logic here
-            
+
 
             base.Update(gameTime);
         }

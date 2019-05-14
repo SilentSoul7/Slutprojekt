@@ -44,8 +44,12 @@
     <Compile Include="BaseEnemy.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="BaseWeapon.cs" />
+    <Compile Include="Death.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Goblin.cs" />
+    <Compile Include="Ground.cs" />
+    <Compile Include="Highscore.cs" />
+    <Compile Include="ICollision.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

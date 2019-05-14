@@ -14,14 +14,23 @@ namespace Game1
         protected Texture2D texture;
         protected Color color = Color.White;
         protected Rectangle rectangle;
-        protected Vector2 position;
+        protected Vector2 position;       
+        protected string text;
+        SpriteFont sprite_Font;
+        
         public virtual void Update(GameTime gametime)
         {
+            
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, rectangle, color);
+            
+        }
+        public virtual void DrawString(SpriteBatch spriteFont)
+        {
+            spriteFont.DrawString( sprite_Font, text, position, color);
         }
     }
 }
