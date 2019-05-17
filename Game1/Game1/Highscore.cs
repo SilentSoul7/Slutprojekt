@@ -27,7 +27,6 @@ namespace Game1
             sw.WriteLine(highscore);
             sw.Close();
 
-
         }
         public void LoadHigh_score()
         {
@@ -47,9 +46,8 @@ namespace Game1
         public override void DrawString(SpriteBatch spriteBatch)
         {
            
-                base.DrawString(spriteBatch);                     
-             
-    }
+                base.DrawString(spriteBatch);                                 
+        }
 
     }
 }

@@ -13,7 +13,12 @@ namespace Game1
     {
         Highscore hs;
         Player player;        
-        string text = "Game Over";
+        string text = "Game Over, restart the game to try again";
+
+        public Death(Player p)
+        {
+            player = p;
+        }
 
         public override void DrawString(SpriteBatch spriteBatch)
         {
@@ -22,12 +27,13 @@ namespace Game1
                 base.DrawString(spriteBatch);
             }
         }
+        Game1 game;
         public override void Update(GameTime gametime)
         {
             if(player.hp <= 0)
             {
                 hs.LoadHigh_score();
-                
+                game.gameObjects.RemoveAt(1);
             }
             base.Update(gametime);
         }

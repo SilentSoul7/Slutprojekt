@@ -16,7 +16,9 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        BaseEnemy baseEnemy = new BaseEnemy(null, Vector2.Zero, 0, 0, 0, 0, 0, BaseEnemy.EnemyType.Goblin);
+        
+        public List<BaseObject> gameObjects = new List<BaseObject>();
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -32,8 +34,13 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin.png"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
+            Player player = new Player(Content.Load<Texture2D>("Knight.png"), new Vector2(100, 200));
+            gameObjects.Add(player);
+            gameObjects.Add(new Death(player));
+            gameObjects.Add(new Ground(Content.Load<Texture2D>("Ground.jpg"), new Rectangle(400, 240, 800, 480)));
             base.Initialize();
+
         }
 
         /// <summary>
@@ -55,20 +62,19 @@ namespace Game1
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            
         }
-
+        BaseEnemy BE;
         public virtual void SpawnEnemy()
         {
-            float spawntime = 0;
+            float spawntime = 1;
             spawntime -= 1f / 60;
-
+            
             if (0 >= spawntime)
             {
                 Random random = new Random();
-                spawntime = random.Next(baseEnemy.minSpawnTime, baseEnemy.maxSpawnTime + 1);
-                List<BaseEnemy> Enemies = new List<BaseEnemy>();
-                Enemies.Add(new BaseEnemy(null, Vector2.Zero, 0, 0, 0, 0, 0, BaseEnemy.EnemyType.Goblin));
-
+                spawntime = random.Next(BE.minSpawnTime, BE.maxSpawnTime + 1);
+                gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin.png"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
             }
         }
 

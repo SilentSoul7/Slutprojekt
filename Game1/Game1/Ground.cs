@@ -10,6 +10,10 @@ namespace Game1
 {
     class Ground:BaseObject
     {
-        
+        public Ground(Texture2D texture, Rectangle rectangle)
+        {
+            this.texture = texture;
+            this.rectangle = rectangle;            
+        }
     }
 }

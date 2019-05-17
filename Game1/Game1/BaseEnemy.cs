@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace Game1
 {
-    public class BaseEnemy:BaseObject
+     class BaseEnemy:BaseObject
     {
         public enum EnemyType {Goblin, Zombie, Boss };
         public int minSpawnTime;
@@ -29,40 +29,35 @@ namespace Game1
             this.attack = attack;
             this.enemyType = enemyType;
         }
-
-        // Ska ligga i Game1
-        public virtual void SpawnEnemy()
-        {            
-            float spawntime = 0;
-            spawntime -= 1f / 60;
-
-            if (0 >= spawntime) { 
-                Random random = new Random();
-                spawntime = random.Next(minSpawnTime, maxSpawnTime + 1);
-                List<BaseEnemy> Enemies = new List<BaseEnemy>();
-                Enemies.Add(new BaseEnemy(null,Vector2.Zero,0,0,0,0,0, EnemyType.Goblin));
-            
-            }
+        Player player;
+        public BaseEnemy(Player p)
+        {
+            player = p;
         }
-
+        BaseEnemy BE;       
         public override void Update(GameTime gametime)
         {
-            // Ligga i Gam1
-            SpawnEnemy();
+            BE.position = BE.position + player.Position * gametime.ElapsedGameTime.Seconds;
+
+            if (hp <= 0)
+            {
+                EnemyDeath();
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
         }
-        
+        Game1 game;
+        GameTime gt;
         public void EnemyDeath()
         {
-            if (hp <= 0)
-            {
-                
-            }
+            player.XP += 5;
+            int index = game.gameObjects.FindIndex(BE.hp, hp => BE.hp == 0);
+            game.gameObjects.RemoveAt(index);
 
         }
+
     }
 }

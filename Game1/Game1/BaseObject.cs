@@ -17,6 +17,11 @@ namespace Game1
         protected Vector2 position;       
         protected string text;
         SpriteFont sprite_Font;
+
+        public Vector2 Position
+        {
+            get { return position; }
+        }
         
         public virtual void Update(GameTime gametime)
         {
@@ -30,7 +35,7 @@ namespace Game1
         }
         public virtual void DrawString(SpriteBatch spriteFont)
         {
-            spriteFont.DrawString( sprite_Font, text, position, color);
+            spriteFont.DrawString(sprite_Font, text, position, color);
         }
     }
 }
