@@ -18,7 +18,7 @@ namespace Game1
         public Goblin(Texture2D texture, Vector2 position) : base(texture, position, 0, 1, 1, 1, 1, EnemyType.Goblin)
         {
             position = new Vector2(100, 200);
-            texture = new Texture2D( 2, 3);
+           
         }
 
     }

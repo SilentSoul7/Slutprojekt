@@ -34,11 +34,11 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin.png"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
-            Player player = new Player(Content.Load<Texture2D>("Knight.png"), new Vector2(100, 200));
+            gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
+            Player player = new Player(Content.Load<Texture2D>("Knight"), new Vector2(100, 200));
             gameObjects.Add(player);
             gameObjects.Add(new Death(player));
-            gameObjects.Add(new Ground(Content.Load<Texture2D>("Ground.jpg"), new Rectangle(400, 240, 800, 480)));
+            gameObjects.Add(new Ground(Content.Load<Texture2D>("Ground"), new Rectangle(400, 240, 800, 480)));
             base.Initialize();
 
         }
@@ -74,7 +74,7 @@ namespace Game1
             {
                 Random random = new Random();
                 spawntime = random.Next(BE.minSpawnTime, BE.maxSpawnTime + 1);
-                gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin.png"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
+                gameObjects.Add(new BaseEnemy(Content.Load<Texture2D>("Goblin"), new Vector2(375, 220), 1, 3, 1, 0, 0, BaseEnemy.EnemyType.Goblin));
             }
         }
 
