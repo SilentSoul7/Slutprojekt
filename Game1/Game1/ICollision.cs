@@ -14,6 +14,6 @@ namespace Game1
             get;
             set;
         }
-        void Collision(BaseObject obj);
+        void Collision(BaseObject obj, GameTime gametime);
     }
 }

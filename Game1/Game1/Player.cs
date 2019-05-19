@@ -12,6 +12,7 @@ namespace Game1
     class Player : BaseObject, ICollision
     {
         public double hp = 100;
+        double attack = 20;
         float speed = 7f;       
         public int XP;
         int highscore = 0;
@@ -20,7 +21,8 @@ namespace Game1
         double jumpChange = 1 / 20;
         int [] levelThresholds = new int[] { 5, 12, 30, 80, 180, 420, 900, 2100, 5000, 12000 };
         int level = 1;
-        int index;
+       
+        
         public Player(Texture2D texture, Vector2 position)
 
         {
@@ -37,7 +39,7 @@ namespace Game1
         {
             base.Draw(spriteBatch);
         }
-        public void Collision(BaseObject col)
+        public void Collision(BaseObject col, GameTime gametime)
         {          
             KeyboardState jump = Keyboard.GetState();
             if (col is Ground && jump.IsKeyDown(Keys.Space))
@@ -49,9 +51,12 @@ namespace Game1
                     jumpChange = -1 / 20;
                 }
             }
+            base.Update(gametime);
         }
         public override void Update (GameTime gametime)
         {
+
+            int currentXpRequired = (int)levelThresholds.GetValue(level);
 
             KeyboardState state = Keyboard.GetState();
 
@@ -65,21 +70,18 @@ namespace Game1
                 position.Y += 10;
 
 
-            if (XP >= 7*index && level < index)
+            if (XP >= currentXpRequired)
             {
                 levelUp();
             }
 
-                base.Update(gametime);
-          
+                base.Update(gametime);         
         }
-
-
         public void levelUp()
         {
-            int index = Array.IndexOf(levelThresholds, 5);
-            hp = hp * 1.01 * level;
-
+            level++;
+           
+            hp = hp * 1.01 * level;          
         }
            
     }

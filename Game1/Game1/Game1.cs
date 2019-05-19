@@ -16,8 +16,8 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
-        public List<BaseObject> gameObjects = new List<BaseObject>();
+        BaseObject baseObject = new BaseObject();
+        public  List<BaseObject> gameObjects = new List<BaseObject>();
 
         public Game1()
         {
@@ -51,7 +51,7 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            BaseObject.SetTexture(GraphicsDevice);
             // TODO: use this.Content to load your game content here
         }
 
@@ -104,7 +104,8 @@ namespace Game1
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
+            baseObject.Draw(spriteBatch);
+            baseObject.DrawString(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

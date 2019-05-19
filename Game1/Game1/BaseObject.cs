@@ -9,15 +9,22 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    public class BaseObject
-    {
-        protected Texture2D texture;
+     public class BaseObject
+    {        
+        public static Texture2D standardTexture;
+        protected Texture2D texture = standardTexture;
         protected Color color = Color.White;
-        protected Rectangle rectangle;
-        protected Vector2 position;       
+        protected Rectangle rectangle = new Rectangle();
+        protected Vector2 position = new Vector2();       
         protected string text;
         SpriteFont sprite_Font;
 
+        public static void SetTexture(GraphicsDevice device)
+        {
+            Texture2D baseTex = new Texture2D(device, 10, 15);
+            standardTexture = baseTex;
+
+        }
         public Vector2 Position
         {
             get { return position; }
@@ -28,9 +35,9 @@ namespace Game1
             
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw( SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rectangle, color);
+            spriteBatch.Draw(texture, position, color);
             
         }
         public virtual void DrawString(SpriteBatch spriteFont)
